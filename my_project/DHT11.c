@@ -5,10 +5,10 @@ static GPIO_InitTypeDef  GPIO_InitStructure;
 
 void DHT11_Init(void)
 {
-	//´ò¿ªG×éµÄÒı½ÅÊ±ÖÓ
+	//æ‰“å¼€Gç»„çš„å¼•è„šæ—¶é’Ÿ
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOG, ENABLE);
 	
-	/* ÅäÖÃPG9Î»Êä³öÄ£Ê½ */
+	/* é…ç½®PG9ä½è¾“å‡ºæ¨¡å¼ */
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
@@ -16,7 +16,7 @@ void DHT11_Init(void)
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_Init(GPIOG, &GPIO_InitStructure);
 	
-	//PB6³õÊ¼»¯×´Ì¬Î»¸ßµçÆ½£¬¿´Ê±ĞòÍ¼
+	//PB6åˆå§‹åŒ–çŠ¶æ€ä½é«˜ç”µå¹³ï¼Œçœ‹æ—¶åºå›¾
 	PGout(9)=1;
 }
 
@@ -30,7 +30,7 @@ void DHT11_Init(void)
 //	u8* p=pbuf;
 //	u32 check_sum=0;
 //	
-//	/* ÅäÖÃPG9Î»Êä³öÄ£Ê½ */
+//	/* é…ç½®PG9ä½è¾“å‡ºæ¨¡å¼ */
 //	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
 //	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
 //	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
@@ -46,7 +46,7 @@ void DHT11_Init(void)
 //	PGout(9) = 1;
 //	delay_us(30);
 
-//	/* ÅäÖÃPG9Î»ÊäÈëÄ£Ê½ */
+//	/* é…ç½®PG9ä½è¾“å…¥æ¨¡å¼ */
 //	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
 //	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
 //	GPIO_InitStructure.GPIO_OType= GPIO_OType_PP;
@@ -56,7 +56,7 @@ void DHT11_Init(void)
 //	
 //	GPIO_Init(GPIOG, &GPIO_InitStructure);
 //	
-//	//µÈ´ıµÍµçÆ½³öÏÖ
+//	//ç­‰å¾…ä½ç”µå¹³å‡ºç°
 //	t=0;
 //	while(PGin(9))
 //	{
@@ -68,7 +68,7 @@ void DHT11_Init(void)
 //		}
 //	}
 //	
-//	//²âÁ¿µÍµçÆ½µÄºÏ·¨ĞÔ
+//	//æµ‹é‡ä½ç”µå¹³çš„åˆæ³•æ€§
 //	t=0;
 //	while(PGin(9)==0)
 //	{
@@ -80,7 +80,7 @@ void DHT11_Init(void)
 //		}
 //	}
 //	
-//	//²âÁ¿¸ßµçÆ½µÄºÏ·¨ĞÔ
+//	//æµ‹é‡é«˜ç”µå¹³çš„åˆæ³•æ€§
 //	t=0;
 //	while(PGin(9))
 //	{
@@ -95,10 +95,10 @@ void DHT11_Init(void)
 //	for(j=0; j<5; j++)
 //	{
 //		d=0;
-//		//Ò»¸ö×Ö½ÚµÄ½ÓÊÕ,´Ó×î¸ßÓĞĞ§Î»¿ªÊ¼½ÓÊÕ
+//		//ä¸€ä¸ªå­—èŠ‚çš„æ¥æ”¶,ä»æœ€é«˜æœ‰æ•ˆä½å¼€å§‹æ¥æ”¶
 //		for(i=7;i>=0;i--)
 //		{
-//			//µÈ´ıÊı¾İ0/Êı¾İ1µÄÇ°ÖÃµÍµçÆ½³ÖĞøÍê±Ï
+//			//ç­‰å¾…æ•°æ®0/æ•°æ®1çš„å‰ç½®ä½ç”µå¹³æŒç»­å®Œæ¯•
 //			t=0;
 //			while(PGin(9)==0)
 //			{
@@ -110,16 +110,16 @@ void DHT11_Init(void)
 //				}
 //			}
 //			
-//			//ÑÓÊ±40us
+//			//å»¶æ—¶40us
 //			delay_us(40);
-//			//ÅĞ¶Ïµ±Ç°PG9Òı½ÅÊÇ·ñÎª¸ßµçÆ½»¹ÊÇµÍµçÆ½
-//			//ÈôÊÇ¸ßµçÆ½£¬ÔòÎªÊı¾İ1
-//			//ÈôÊÇµÍµçÆ½£¬ÔòÎªÊı¾İ0
+//			//åˆ¤æ–­å½“å‰PG9å¼•è„šæ˜¯å¦ä¸ºé«˜ç”µå¹³è¿˜æ˜¯ä½ç”µå¹³
+//			//è‹¥æ˜¯é«˜ç”µå¹³ï¼Œåˆ™ä¸ºæ•°æ®1
+//			//è‹¥æ˜¯ä½ç”µå¹³ï¼Œåˆ™ä¸ºæ•°æ®0
 //			if(PGin(9))
 //			{
-//				d |= 1<<i;	//½«±äÁ¿d¶ÔÓ¦µÄ±ÈÌØÎ» ÖÃ1,Èçi=7£¬d |=1<<7¾ÍÊÇ½«±äÁ¿dµÄbit7Öµ1
+//				d |= 1<<i;	//å°†å˜é‡då¯¹åº”çš„æ¯”ç‰¹ä½ ç½®1,å¦‚i=7ï¼Œd |=1<<7å°±æ˜¯å°†å˜é‡dçš„bit7å€¼1
 //				
-//				//µÈ´ı¸ßµçÆ½³ÖĞøÍê±Ï
+//				//ç­‰å¾…é«˜ç”µå¹³æŒç»­å®Œæ¯•
 //				t=0;
 //				while(PGin(9))
 //				{
@@ -137,7 +137,7 @@ void DHT11_Init(void)
 //	
 //		
 //	
-//	//Ğ£ÑéºÍ
+//	//æ ¡éªŒå’Œ
 //	check_sum = (p[0]+p[1]+p[2]+p[3])&0xFF;
 //	if(p[4] != check_sum)
 //	{
@@ -168,7 +168,7 @@ void gpio_mode_in(void)
 }
 
 
-//·½·¨¶ş
+//æ–¹æ³•äºŒ
 u8 DHT11_Read_Byte(void)
 {
 	u8 mask,data;
@@ -190,7 +190,7 @@ u8 DHT11_Read_Byte(void)
 u32 DHT11_Read(u8* pbuf)
 {
 	u8 count=0;
-	/* ÅäÖÃPG9Î»Êä³öÄ£Ê½ */
+	/* é…ç½®PG9ä½è¾“å‡ºæ¨¡å¼ */
 	gpio_mode_out();
 	PGout(9)=0;
 	delay_us(20);
@@ -233,7 +233,7 @@ u32 DHT11_Read(u8* pbuf)
 	}
 }   
 
-DHT11_read
+
 	
 	
 
