@@ -106,7 +106,7 @@ void DHT11_Init(void)
 //				delay_us(1);
 //				if(t>=1000)
 //				{
-//					return 4;
+//				    return 4;
 //				}
 //			}
 //			
